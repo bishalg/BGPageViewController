@@ -15,5 +15,6 @@
 @property (strong, nonatomic) id          dataObject;
 @property (nonatomic, strong) NSArray     *array;
 @property (nonatomic)         NSUInteger  index;
+@property (nonatomic, strong) UIColor     *textColor;
 
 @end

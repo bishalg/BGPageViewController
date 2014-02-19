@@ -12,6 +12,8 @@
 @interface BGRootVC ()
 
 @property (nonatomic) CGFloat fontValue;
+@property (nonatomic, strong) UIColor *textColor;
+@property (nonatomic) NSUInteger currentIndex;
 
 @end
 
@@ -19,6 +21,8 @@
 
 @synthesize pageViewController, pageContent;
 @synthesize fontValue;
+@synthesize textColor;
+@synthesize currentIndex;
 
 #pragma mark - Page View Controller Data Source
 
@@ -32,6 +36,7 @@
     dataViewController.array            = pageContent;
     dataViewController.index            = index;
     dataViewController.dataObject       = [self.pageContent objectAtIndex:index];
+    dataViewController.textColor        = textColor;
     return dataViewController;
 }
 
@@ -45,6 +50,7 @@
         return nil;
     }
     index--;
+    self.currentIndex = index;
     return [self viewControllerAtIndex:index storyboard:viewController.storyboard];
 }
 
@@ -57,6 +63,7 @@
     if (index == [self.pageContent count]){
         return nil;
     }
+    self.currentIndex = index;
     return [self viewControllerAtIndex:index storyboard:viewController.storyboard];
 }
 
@@ -94,10 +101,47 @@
     self.view.gestureRecognizers                = self.pageViewController.gestureRecognizers;
 }
 
+- (void)setupSegmentControl {
+    UISegmentedControl *segmentControl = [[UISegmentedControl alloc]initWithItems:[NSArray arrayWithObjects:@"Red",@"Green",@"Blue",nil]];
+    segmentControl.frame = CGRectMake(55, 45, 200, 20);
+    segmentControl.selectedSegmentIndex = 0;
+   [segmentControl setTintColor:[UIColor blackColor]];
+    [segmentControl addTarget:self action:@selector(segmentViewValueChanged:) forControlEvents:UIControlEventValueChanged];
+    [self.view addSubview:segmentControl];
+}
+
+- (IBAction)segmentViewValueChanged:(UISegmentedControl *)sControl
+{
+    if (sControl.selectedSegmentIndex==0) {
+        textColor = [UIColor redColor];
+    }
+    else if (sControl.selectedSegmentIndex==1) {
+        textColor = [UIColor greenColor];
+    }
+    else if (sControl.selectedSegmentIndex==2) {
+        textColor = [UIColor blueColor];
+    }
+    
+    BGDetailVC *dataViewController      = [self viewControllerAtIndex:currentIndex-1 storyboard:self.storyboard];
+    dataViewController.textColor = textColor;
+    NSArray *viewControllers                    = @[dataViewController];
+    [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+    
+//    __block BGRootVC *blocksafeSelf = self;
+//    [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:^(BOOL finished){
+//        if(finished)
+//        {
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                [blocksafeSelf.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:NULL];// bug fix for uipageview controller
+//            });
+//        }
+//    }];
+}
+
 #pragma mark - View Life Cycle
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
-    self                        = [super initWithCoder:aDecoder];
+    self  = [super initWithCoder:aDecoder];
     return self;
 }
 
@@ -113,6 +157,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self setupSegmentControl];
 	[self setUpPageViewController];
 }
 
