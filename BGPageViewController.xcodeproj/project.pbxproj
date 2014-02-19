@@ -22,6 +22,8 @@
 		057A128018B450B5000B63D6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 057A125F18B450B5000B63D6 /* UIKit.framework */; };
 		057A128818B450B5000B63D6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 057A128618B450B5000B63D6 /* InfoPlist.strings */; };
 		057A128A18B450B5000B63D6 /* BGPageViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 057A128918B450B5000B63D6 /* BGPageViewControllerTests.m */; };
+		057A129518B45285000B63D6 /* BGRootVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 057A129418B45285000B63D6 /* BGRootVC.m */; };
+		057A129818B4537A000B63D6 /* BGDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 057A129718B4537A000B63D6 /* BGDetailVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,10 @@
 		057A128518B450B5000B63D6 /* BGPageViewControllerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BGPageViewControllerTests-Info.plist"; sourceTree = "<group>"; };
 		057A128718B450B5000B63D6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		057A128918B450B5000B63D6 /* BGPageViewControllerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BGPageViewControllerTests.m; sourceTree = "<group>"; };
+		057A129318B45285000B63D6 /* BGRootVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGRootVC.h; sourceTree = "<group>"; };
+		057A129418B45285000B63D6 /* BGRootVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGRootVC.m; sourceTree = "<group>"; };
+		057A129618B4537A000B63D6 /* BGDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGDetailVC.h; sourceTree = "<group>"; };
+		057A129718B4537A000B63D6 /* BGDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGDetailVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +128,10 @@
 				057A127418B450B5000B63D6 /* BGViewController.m */,
 				057A127618B450B5000B63D6 /* Images.xcassets */,
 				057A126218B450B5000B63D6 /* Supporting Files */,
+				057A129318B45285000B63D6 /* BGRootVC.h */,
+				057A129418B45285000B63D6 /* BGRootVC.m */,
+				057A129618B4537A000B63D6 /* BGDetailVC.h */,
+				057A129718B4537A000B63D6 /* BGDetailVC.m */,
 			);
 			path = BGPageViewController;
 			sourceTree = "<group>";
@@ -254,9 +264,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				057A129818B4537A000B63D6 /* BGDetailVC.m in Sources */,
 				057A127518B450B5000B63D6 /* BGViewController.m in Sources */,
 				057A126818B450B5000B63D6 /* main.m in Sources */,
 				057A126C18B450B5000B63D6 /* BGAppDelegate.m in Sources */,
+				057A129518B45285000B63D6 /* BGRootVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
